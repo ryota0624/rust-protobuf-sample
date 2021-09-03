@@ -1,5 +1,4 @@
-use std::error;
-use std::fmt::{Debug, Display, Formatter};
+use std::fmt::Debug;
 use std::marker::PhantomData;
 
 pub trait Entity {
