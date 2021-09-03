@@ -1,0 +1,16 @@
+syntax = "proto2";
+
+package book_club.service.user;
+
+service UserService {
+  rpc Register (RegisterUserRequest) returns (RegisterUserReply) {}
+}
+
+message RegisterUserRequest {
+  required string email = 1;
+  required string name = 2;
+  required string icon = 3;
+}
+message RegisterUserReply {
+  required string user_id = 1;
+}

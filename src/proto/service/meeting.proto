@@ -1,0 +1,27 @@
+syntax = "proto2";
+
+package book_club.service.meeting;
+
+service MeetingService {
+  rpc Pick (InterestedRangePickRequest) returns (InterestedRangePickResponse) {}
+  rpc Comment (CommentRequest) returns (CommentResponse) {}
+}
+
+message InterestedRangePickRequest {
+  required string meeting_id = 1;
+  required string title = 2;
+  required string summary = 3;
+  required string author_participant_id = 4;
+}
+message InterestedRangePickResponse {
+  required string pickup_id = 1;
+}
+
+message CommentRequest {
+  required string pickup_id = 1;
+  required string text = 2;
+  required string author_participant_id = 3;
+}
+message CommentResponse {
+  required string comment_id = 1;
+}

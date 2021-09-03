@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package book_club.model.book;
+
+message Book {
+  required string id = 1;
+  required string title = 2;
+  required string purchaseUrl = 3;
+  optional BookDetail detail = 4;
+}
+
+// Information to know more a book
+message BookDetail {
+  optional string coverUrl = 1;
+  optional string author = 2;
+  optional string isbm = 3;
+}

@@ -1,0 +1,35 @@
+syntax = "proto2";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+package book_club.service.club;
+
+service ClubService {
+  rpc EstablishClub (EstablishClubRequest) returns (EstablishClubReply) {}
+  rpc JoinToClub (JoinToClubRequest) returns (google.protobuf.Empty) {}
+  rpc ScheduleMeeting (ScheduleMeetingRequest) returns (ScheduleMeetingResponse) {}
+}
+
+message EstablishClubRequest {
+  required string book_id = 1;
+  required string owner_user_id = 2;
+  optional string description = 3;
+}
+
+message EstablishClubReply {
+  required string club_id = 1;
+}
+
+message JoinToClubRequest {
+  required string club_id = 1;
+  required string participant_user_id = 2;
+}
+
+message ScheduleMeetingRequest {
+  required string club_id = 1;
+  required google.protobuf.Timestamp event_at = 3;
+}
+
+message ScheduleMeetingResponse {
+  required string meeting_id = 1;
+}

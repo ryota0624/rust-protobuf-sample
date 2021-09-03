@@ -1,0 +1,40 @@
+syntax = "proto2";
+import "google/protobuf/timestamp.proto";
+
+package book_club.model.meeting;
+
+message Meeting {
+  required string id = 1;
+  required string club_id = 2;
+  // a meeting open time
+  required google.protobuf.Timestamp event_at = 3;
+}
+
+message Participant {
+  required string id = 1;
+  required string name = 2;
+  optional string iconUrl = 3;
+}
+
+message Mention {
+  required string participant_id = 1;
+}
+
+message InterestedRange {
+  required string id = 1;
+  required string meeting_id = 2;
+  required string title = 3;
+  required string summary = 4;
+  required Participant author = 5;
+  repeated Comment comments = 6;
+  repeated Mention mention_to = 7;
+}
+
+message Comment {
+  required string id = 1;
+  required string interested_range_id = 2;
+  required string text = 3;
+  required Participant author = 4;
+  repeated Mention mention_to = 5;
+}
+
