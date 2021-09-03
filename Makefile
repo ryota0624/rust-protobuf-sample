@@ -3,3 +3,12 @@ protodoc:
 
 build:
 	cargo build
+
+format:
+	cargo fmt
+
+fix:
+	cargo fix
+
+lint:
+	cargo clippy
