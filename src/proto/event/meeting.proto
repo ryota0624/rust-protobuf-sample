@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+import "google/protobuf/timestamp.proto";
+
+package book_club.model.meeting;
+
+message MeetingScheduled {
+  required string id = 1;
+  required string club_id = 2;
+  // a meeting open time
+  required google.protobuf.Timestamp event_at = 3;
+}

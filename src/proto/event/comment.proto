@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+import "proto/model/meeting.proto";
+
+package book_club.model.comment;
+
+message CommentPosted {
+  required string comment_id = 1;
+  required string interested_range_id = 2;
+  required string text = 3;
+  required meeting.Participant author = 4;
+  repeated meeting.Mention mention_to = 5;
+}

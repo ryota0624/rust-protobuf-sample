@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package book_club.model.club;
+
+message ClubEstablished {
+  required string club_id = 1;
+  required string book_id = 2;
+  required string owner_user_id = 3;
+  repeated string participant_user_ids = 4;
+  optional string description = 5;
+}

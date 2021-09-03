@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+import "proto/model/meeting.proto";
+
+package book_club.model.interested_range;
+
+message InterestedRangePicked {
+  required string id = 1;
+  required string meeting_id = 2;
+  required string title = 3;
+  required string summary = 4;
+  required meeting.Participant author = 5;
+  repeated meeting.Mention mention_to = 7;
+}

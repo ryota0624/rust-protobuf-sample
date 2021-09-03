@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package book_club.model.meeting;
+
+message UserSignupCompleted {
+  required string id = 1;
+  required string name = 2;
+  required string email = 3;
+  optional string iconUrl = 4;
+}
+
