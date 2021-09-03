@@ -10,7 +10,7 @@ pub trait Entity {
 pub enum Error<E: Entity> {
     EntityNotFound,
     EntityAlreadyExist(),
-    UnUse(PhantomData<fn() -> E>),
+    _UnUse(PhantomData<fn() -> E>),
 }
 
 pub trait Repository<E: Entity> {

@@ -1,5 +1,7 @@
 pub mod entity;
 pub mod repository;
+pub mod event_publisher;
+pub mod event_subscriber;
 
 extern crate prost;
 #[macro_use]

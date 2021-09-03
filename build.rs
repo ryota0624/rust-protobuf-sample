@@ -1,15 +1,8 @@
-use std::ffi::OsString;
 use std::fs;
-use std::fs::ReadDir;
-use std::fs::{DirBuilder, DirEntry};
 use std::io;
-use std::io::prelude::*;
-use std::io::{Error, Result};
-use std::iter::FlatMap;
+use std::io::Result;
 use std::path::Path;
 use std::path::PathBuf;
-
-use prost_build;
 
 fn find_file(dir: &Path, check: &dyn Fn(&Path) -> bool) -> io::Result<Vec<PathBuf>> {
     if dir.is_dir() {
@@ -17,7 +10,7 @@ fn find_file(dir: &Path, check: &dyn Fn(&Path) -> bool) -> io::Result<Vec<PathBu
         dir.try_fold(Vec::new(), |paths: Vec<_>, entry| {
             let entry = entry?;
             let path = entry.path();
-            let files = find_file(path.as_path().clone(), check)?;
+            let files = find_file(path.as_path(), check)?;
             Ok([paths, files].concat())
         })
     } else {
@@ -35,7 +28,7 @@ fn main() -> Result<()> {
         let ext = path.extension().map(std::ffi::OsStr::to_str).flatten();
         ext == Some("proto")
     })?;
-    prost_build::compile_protos(&proto_files, &vec!["src/"])?;
+    prost_build::compile_protos(&proto_files, &["src/"])?;
 
     Ok(())
 }

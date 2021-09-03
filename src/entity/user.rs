@@ -55,7 +55,7 @@ impl Repository<User> for UserRepositoryOnMemory {
     }
 
     fn store(mut self, t: User) -> Result<Self, Error<User>> {
-        if self.user_map.get(&t.id()).is_some() {
+        if self.user_map.get(t.id()).is_some() {
             Err(Error::EntityAlreadyExist())
         } else {
             self.user_map.insert(t.id().clone(), t);
@@ -66,8 +66,8 @@ impl Repository<User> for UserRepositoryOnMemory {
 
 impl UserRepository for UserRepositoryOnMemory {}
 
-impl UserRepositoryOnMemory {
-    pub fn new() -> UserRepositoryOnMemory {
+impl Default for UserRepositoryOnMemory {
+    fn default() -> UserRepositoryOnMemory {
         UserRepositoryOnMemory {
             user_map: HashMap::new(),
         }
